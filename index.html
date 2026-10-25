@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindSpark AI | Think Better, Learn Smarter</title>
+
+<style>
+:root {
+  --pink: #ff5ca8;
+  --pink-light: #fff0f7;
+  --purple: #8063ed;
+  --purple-light: #f0ebff;
+  --green: #40c9a2;
+  --green-light: #e8fff6;
+  --ink: #292342;
+  --muted: #77738c;
+  --white: #ffffff;
+  --line: #eee9f5;
+  --shadow: 0 12px 35px rgba(87, 63, 133, .09);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+button, input, select, textarea { font: inherit; }
+
+button { cursor: pointer; }
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #c5b7ff;
+  outline-offset: 3px;
+}
+
+[hidden] { display: none !important; }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 5%;
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  font-size: 21px;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ffe0ef, #e9e0ff);
+  font-size: 26px;
+}
+
+.brand span { color: var(--pink); }
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 13px;
+  padding: 12px 17px;
+  font-weight: 750;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  color: white;
+  background: linear-gradient(120deg, var(--pink), var(--purple));
+  box-shadow: 0 7px 18px #d8c9ff;
+}
+
+.btn-secondary {
+  color: var(--purple);
+  background: var(--purple-light);
+}
+
+.btn-green {
+  color: #146b53;
+  background: var(--green-light);
+}
+
+.btn-outline {
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
+}
+
+.container {
+  width: min(1160px, 92%);
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 35px;
+  padding: 62px 0 55px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  background: #fff0f8;
+  border-radius: 50%;
+  filter: blur(8px);
+  top: 0;
+  right: 7%;
+  z-index: -1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 9px 13px;
+  background: var(--pink-light);
+  color: #c52e7b;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5.2vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 22px 0 17px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--pink), var(--purple), #28ae8c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-description {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+.tagline {
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--purple);
+  animation: taglineGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes taglineGlow {
+  from { text-shadow: 0 0 2px #d8ceff; }
+  to { text-shadow: 0 0 13px #c4a9ff, 0 0 22px #ffc5e1; }
+}
+
+.brain-stage {
+  min-height: 310px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.brain-orbit {
+  width: 245px;
+  height: 245px;
+  border: 2px dashed #e4d9ff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  animation: orbit 24s linear infinite;
+}
+
+.brain-float {
+  font-size: 125px;
+  animation: brainFloat 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 15px 20px #eac4e5);
+}
+
+@keyframes brainFloat {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-17px) rotate(4deg); }
+}
+
+@keyframes orbit { to { transform: rotate(360deg); } }
+
+.float-badge {
+  position: absolute;
+  background: white;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: 14px;
+  padding: 12px 15px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.badge-one { top: 28px; right: 0; }
+.badge-two { bottom: 35px; left: 0; }
+.badge-three { bottom: 0; right: 18px; }
+
+.section-heading {
+  margin: 0 0 8px;
+  font-size: clamp(24px, 3vw, 33px);
+  letter-spacing: -.6px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 25px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  margin-bottom: 25px;
+}
+
+.section-block { padding: 28px 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.feature-card {
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  padding: 22px;
+  background: white;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: #dfd3ff;
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  font-size: 25px;
+  background: var(--pink-light);
+  margin-bottom: 14px;
+}
+
+.feature-card h3 { margin: 0 0 9px; }
+
+.feature-card p {
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid #e6e0f0;
+  background: #fff;
+  padding: 13px 14px;
+  border-radius: 12px;
+  color: var(--ink);
+  margin-top: 7px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 17px;
+}
+
+.form-field { margin-bottom: 16px; }
+
+.muted { color: var(--muted); }
+
+.small { font-size: 13px; line-height: 1.6; }
+
+.message {
+  margin-top: 13px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.message:empty { display: none; }
+
+.success { background: var(--green-light); color: #176c53; }
+.error { background: #fff0f1; color: #ad3445; }
+.info { background: var(--purple-light); color: #5b49b4; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 15px;
+  margin: 22px 0;
+}
+
+.stat-card {
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: linear-gradient(140deg, white, #fff9fc);
+}
+
+.stat-number {
+  font-size: 30px;
+  font-weight: 900;
+  margin-top: 10px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 9px;
+  border-radius: 99px;
+  background: #f0ecf6;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--green));
+  transition: width .3s;
+}
+
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 13px;
+}
+
+.skill-card {
+  text-align: left;
+  width: 100%;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 17px;
+  border-radius: 16px;
+  color: var(--ink);
+}
+
+.skill-card.selected {
+  border: 2px solid var(--purple);
+  background: #f7f4ff;
+}
+
+.skill-card .skill-emoji {
+  font-size: 27px;
+  display: block;
+  margin-bottom: 9px;
+}
+
+.skill-card strong { display: block; margin-bottom: 7px; }
+.skill-card small { color: var(--muted); line-height: 1.5; }
+
+.chip {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 30px;
+  padding: 9px 13px;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.chip.active {
+  background: var(--purple-light);
+  color: #5b49b4;
+  border-color: #cfc2ff;
+}
+/* PART 2: CONTINUED CSS */
+
+.discovery-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+}
+
+.choice-button {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 15px;
+  border-radius: 14px;
+  color: var(--ink);
+}
+
+.choice-button.selected {
+  border: 2px solid var(--pink);
+  background: var(--pink-light);
+}
+
+.answer-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 9px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--ink);
+}
+
+.answer-option.selected {
+  background: var(--purple-light);
+  border-color: var(--purple);
+}
+
+.answer-option.correct {
+  background: var(--green-light);
+  border-color: var(--green);
+}
+
+.answer-option.wrong {
+  background: #fff0f1;
+  border-color: #ef9aa5;
+}
+
+.brain-chat {
+  background: linear-gradient(135deg, #fff5fa, #f7f3ff, #effff8);
+  border: 1px solid #e9ddff;
+  border-radius: 22px;
+  padding: 22px;
+}
+
+.chat-message {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 16px;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+.photo-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.photo-preview img {
+  width: 130px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.quote-card {
+  background: linear-gradient(135deg, #fff1f7, #f3efff);
+  border: 1px solid #eedcf7;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+.quote-text {
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 15px;
+}
+
+.game-card {
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  padding: 18px;
+  background: white;
+}
+
+.game-card button { margin-top: 12px; }
+
+.step-list {
+  display: grid;
+  gap: 12px;
+  counter-reset: steps;
+}
+
+.step-item {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 16px 17px 16px 53px;
+  line-height: 1.7;
+  background: white;
+}
+
+.step-item::before {
+  counter-increment: steps;
+  content: counter(steps);
+  position: absolute;
+  left: 14px;
+  top: 15px;
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--purple-light);
+  color: var(--purple);
+  font-weight: 900;
+}
+
+.activity-list {
+  display: grid;
+  gap: 10px;
+}
+
+.activity-item {
+  padding: 13px;
+  border-radius: 13px;
+  background: #fcfaff;
+  border: 1px solid var(--line);
+}
+
+.activity-item small { color: var(--muted); }
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+}
+
+.project-card {
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  padding: 17px;
+}
+
+.project-card h3 { margin-top: 0; }
+
+.project-card img {
+  max-width: 100%;
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 0;
+  margin-top: 35px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.empty-state {
+  color: var(--muted);
+  padding: 18px;
+  border: 1px dashed #ddd4ef;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 22px 0;
+}
+
+.section-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+}
+
+.nav-button {
+  background: white;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.nav-button.active {
+  background: var(--pink-light);
+  color: #b52f76;
+  border-color: #ffd1e5;
+}
+
+#appScreen { padding-top: 10px; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding-top: 35px; }
+  .brain-stage { min-height: 260px; }
+  .grid, .skill-grid, .game-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .topbar { padding: 12px 4%; }
+  .brand { font-size: 17px; }
+}
+
+@media (max-width: 480px) {
+  .grid, .skill-grid, .game-grid, .form-grid,
+  .discovery-options, .project-list { grid-template-columns: 1fr; }
+  .panel { padding: 17px; }
+  .hero h1 { letter-spacing: -1px; }
+  .top-actions .btn { padding: 10px; font-size: 12px; }
+  .float-badge { font-size: 11px; }
+  .brain-orbit { width: 205px; height: 205px; }
+  .brain-float { font-size: 100px; }
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon">🧠</div>
+    <div>MindSpark <span>AI</span></div>
+  </div>
+  <div class="top-actions">
+    <button class="btn btn-outline" id="topProfileBtn">My Profile</button>
+    <button class="btn btn-primary" id="topStartBtn">Get Started ↗</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="hero" id="home">
+  <div>
+    <span class="eyebrow">✦ Your personal learning universe</span>
+    <h1>Discover your spark.<br><span class="gradient-text">Unlock your potential.</span></h1>
+    <p class="hero-description">
+      Learn what interests you, explore your strengths, solve problems
+      step by step, and build skills that matter to your future.
+    </p>
+    <p class="tagline">Think Better · Learn Smarter · Grow Further</p>
+    <div class="card-row">
+      <button class="btn btn-primary" id="heroStartBtn">Explore My Future ↗</button>
+      <button class="btn btn-secondary" id="heroBrainBtn">Meet Brain Float 🧠</button>
+    </div>
+  </div>
+  <div class="brain-stage" aria-label="Floating pink brain illustration">
+    <div class="brain-orbit"><div class="brain-float">🧠</div></div>
+    <div class="float-badge badge-one">✨ Think creatively</div>
+    <div class="float-badge badge-two">🌱 Grow every day</div>
+    <div class="float-badge badge-three">💡 Stay curious</div>
+  </div>
+</section>
+
+<section class="section-block" id="welcomeSection">
+  <div class="panel">
+    <h2 class="section-heading">Welcome to your growth space ✨</h2>
+    <p class="section-subtitle">Create your local student profile to personalise your experience.</p>
+    <form id="profileForm">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="studentName">Your name</label>
+          <input class="field" id="studentName" required maxlength="60" placeholder="Enter your name">
+        </div>
+        <div class="form-field">
+          <label for="educationLevel">Education level</label>
+          <select class="field" id="educationLevel">
+            <option>Intermediate</option>
+            <option>B.Tech / Engineering</option>
+            <option>School student</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="studentGoal">Your main goal</label>
+          <select class="field" id="studentGoal">
+            <option>Explore my interests</option>
+            <option>Improve academic skills</option>
+            <option>Prepare for a career</option>
+            <option>Build creative skills</option>
+            <option>Improve communication</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Create My Profile</button>
+      <p class="message" id="profileMessage" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section id="appScreen" hidden>
+  <nav class="section-nav" aria-label="Main navigation">
+    <button class="nav-button active" data-target="dashboardSection">🏠 Dashboard</button>
+    <button class="nav-button" data-target="discoverySection">🎯 Discovery</button>
+    <button class="nav-button" data-target="brainSection">🧠 Brain Float</button>
+    <button class="nav-button" data-target="learningSection">📚 Learn</button>
+    <button class="nav-button" data-target="gamesSection">🎮 Brain Games</button>
+    <button class="nav-button" data-target="dailySection">🌱 Daily Spark</button>
+    <button class="nav-button" data-target="projectsSection">🚀 Projects</button>
+  </nav>
+
+  <section id="dashboardSection" class="section-block">
+    <h2 class="section-heading">Your Dashboard, <span id="dashboardName">Learner</span>! 👋</h2>
+    <p class="section-subtitle">Small steps today can create big possibilities tomorrow.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card"><span>🎯 Selected skills</span><div class="stat-number" id="statSkills">0</div></div>
+      <div class="stat-card"><span>⭐ Points earned</span><div class="stat-number" id="statPoints">0</div></div>
+      <div class="stat-card"><span>📚 Learning questions</span><div class="stat-number" id="statQuestions">0</div></div>
+      <div class="stat-card"><span>🚀 Projects</span><div class="stat-number" id="statProjects">0</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="section-title-row">
+        <div><h3>My learning journey</h3><p class="muted small">Track your activity in this browser.</p></div>
+        <strong id="progressLabel">0% complete</strong>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="card-row" style="margin-top:18px">
+        <button class="btn btn-primary" data-jump="discoverySection">Discover my skills</button>
+        <button class="btn btn-secondary" data-jump="brainSection">Ask Brain Float</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="feature-card"><div class="feature-icon">🧠</div><h3>Think differently</h3><p>Explore questions, ideas and new ways to solve problems.</p></article>
+      <article class="feature-card"><div class="feature-icon" style="background:var(--purple-light)">📸</div><h3>Learn from questions</h3><p>Type a question or upload an image to start your learning process.</p></article>
+      <article class="feature-card"><div class="feature-icon" style="background:var(--green-light)">🌱</div><h3>Grow with purpose</h3><p>Build useful habits and reflect on your progress.</p></article>
+    </div>
+
+    <h3 style="margin-top:25px">Recent activity</h3>
+    <div class="activity-list" id="activityList"></div>
+  </section>
+  <section id="discoverySection" class="section-block" hidden>
+  <h2 class="section-heading">Skill Discovery 🎯</h2>
+  <p class="section-subtitle">Choose interests that excite you. There is no single right path.</p>
+
+  <div class="panel">
+    <div class="form-field">
+      <label for="skillSearch">Search skills</label>
+      <input class="field" id="skillSearch" placeholder="Try Python, singing, filmmaking...">
+    </div>
+    <div class="card-row" id="skillFilters" style="margin-bottom:18px">
+      <button class="chip active" data-category="All">All</button>
+      <button class="chip" data-category="Technology">Technology</button>
+      <button class="chip" data-category="Academics">Academics</button>
+      <button class="chip" data-category="Creative Arts">Creative arts</button>
+      <button class="chip" data-category="Communication">Communication</button>
+      <button class="chip" data-category="Personal Growth">Personal growth</button>
+    </div>
+    <div class="skill-grid" id="skillGrid"></div>
+    <p class="message" id="skillMessage" aria-live="polite"></p>
+    <button class="btn btn-primary" id="beginDiscoveryBtn">Start My Discovery Quiz →</button>
+  </div>
+
+  <div class="panel" id="discoveryQuiz" hidden>
+    <div class="section-title-row">
+      <h3 id="discoveryTitle">Question 1</h3>
+      <span class="muted small" id="discoveryProgress"></span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="discoveryBar"></div></div>
+    <h3 id="discoveryQuestion" style="line-height:1.6"></h3>
+    <div class="discovery-options" id="discoveryOptions"></div>
+    <p class="message" id="discoveryMessage" aria-live="polite"></p>
+    <div class="card-row">
+      <button class="btn btn-outline" id="discoveryBack">Back</button>
+      <button class="btn btn-primary" id="discoveryNext">Next →</button>
+    </div>
+    <div id="discoveryResult" class="quote-card" hidden></div>
+  </div>
+</section>
+
+<section id="brainSection" class="section-block" hidden>
+  <h2 class="section-heading">Meet Brain Float 🧠</h2>
+  <p class="section-subtitle">Your friendly learning companion. Ask a question or start with a photo.</p>
+
+  <div class="brain-chat">
+    <div class="card-row">
+      <div class="brain-float" style="font-size:64px">🧠</div>
+      <div><h3 style="margin-bottom:5px">Brain Float</h3><p class="muted small">Think Better · Learn Smarter · Grow Further</p></div>
+    </div>
+    <form id="brainForm">
+      <div class="form-field">
+        <label for="brainSubject">Subject</label>
+        <select class="field" id="brainSubject">
+          <option>General question</option>
+          <option>Maths & Aptitude</option>
+          <option>Programming</option>
+          <option>English</option>
+          <option>Science</option>
+          <option>Creative skills</option>
+          <option>Career planning</option>
+          <option>Environment</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="brainQuestion">What would you like to understand?</label>
+        <textarea class="field" id="brainQuestion" rows="4" maxlength="3000" placeholder="Type your question here..." required></textarea>
+      </div>
+      <div class="form-field">
+        <label for="brainPhoto">Or upload a question photo</label>
+        <input class="field" id="brainPhoto" type="file" accept="image/*">
+        <div class="photo-preview" id="brainPhotoPreview"></div>
+        <p class="small muted">The photo can be previewed here. Reading and solving text inside the image needs OCR/AI integration.</p>
+      </div>
+      <button class="btn btn-primary" type="submit">Help Me Understand ✨</button>
+      <button class="btn btn-outline" type="button" id="clearBrain">Clear</button>
+    </form>
+    <div class="chat-message" id="brainResponse" aria-live="polite">Hi! I'm Brain Float. Ask me about a topic and we'll break the learning process into manageable steps.</div>
+  </div>
+</section>
+
+<section id="learningSection" class="section-block" hidden>
+  <h2 class="section-heading">Step-by-Step Learning 📚</h2>
+  <p class="section-subtitle">Turn a difficult topic into smaller, clearer learning steps.</p>
+
+  <div class="panel">
+    <form id="learningForm">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="learningTopic">Topic or question</label>
+          <input class="field" id="learningTopic" required maxlength="500" placeholder="Example: Python for loop">
+        </div>
+        <div class="form-field">
+          <label for="learningSubject">Choose subject</label>
+          <select class="field" id="learningSubject">
+            <option>Programming</option>
+            <option>Maths & Aptitude</option>
+            <option>English</option>
+            <option>Science</option>
+            <option>Creative skills</option>
+            <option>Career skills</option>
+            <option>General learning</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Build My Learning Plan</button>
+    </form>
+    <div id="learningResult" hidden style="margin-top:25px">
+      <h3 id="learningResultTitle"></h3>
+      <div id="learningSteps" class="step-list"></div>
+      <div class="quote-card" style="margin-top:20px">
+        <strong>Check your understanding</strong>
+        <p id="learningCheck"></p>
+        <label for="learningReflection">Explain the concept in your own words</label>
+        <textarea class="field" id="learningReflection" rows="3" placeholder="Write what you understood..."></textarea>
+        <button class="btn btn-green" id="saveLearningReflection" type="button" style="margin-top:10px">Save Reflection</button>
+        <p class="message" id="learningMessage"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gamesSection" class="section-block" hidden>
+  <h2 class="section-heading">Brain Games 🎮</h2>
+  <p class="section-subtitle">Practise reasoning, maths, English and creativity. Earn points as you learn.</p>
+
+  <div class="panel">
+    <label for="gameCategory">Choose a practice category</label>
+    <select class="field" id="gameCategory">
+      <option value="maths">Maths & Aptitude</option>
+      <option value="reasoning">Logical Reasoning</option>
+      <option value="english">English</option>
+      <option value="programming">Programming</option>
+      <option value="creative">Creative Skills</option>
+    </select>
+    <button class="btn btn-primary" id="startGame" style="margin-top:14px">Start Practice</button>
+  </div>
+
+  <div class="panel" id="gameArea" hidden>
+    <div class="section-title-row">
+      <h3 id="gameQuestionNumber">Question 1</h3>
+      <span class="muted small" id="gameScore"></span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="gameBar"></div></div>
+    <h3 id="gameQuestion" style="line-height:1.7"></h3>
+    <div id="gameOptions"></div>
+    <p class="message" id="gameFeedback" aria-live="polite"></p>
+    <div class="card-row">
+      <button class="btn btn-primary" id="checkGameAnswer">Check Answer</button>
+      <button class="btn btn-secondary" id="nextGameQuestion" hidden>Next Question →</button>
+    </div>
+  </div>
+</section>
+
+<section id="dailySection" class="section-block" hidden>
+  <h2 class="section-heading">Daily Spark 🌱</h2>
+  <p class="section-subtitle">A little inspiration, one useful fact and one small action for today.</p>
+  <div class="grid">
+    <article class="quote-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Environment Reminder</h3>
+      <p class="quote-text" id="environmentQuote"></p>
+      <button class="btn btn-secondary" id="nextQuote">Another Reminder ↻</button>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon" style="background:var(--green-light)">💡</div>
+      <h3>GK Spark</h3>
+      <p id="gkFact" style="line-height:1.8"></p>
+      <button class="btn btn-green" id="nextFact">Next Fact ↻</button>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon" style="background:var(--purple-light)">✨</div>
+      <h3>Today's Small Action</h3>
+      <p id="dailyAction" style="line-height:1.8"></p>
+      <button class="btn btn-primary" id="completeAction">I Did It ✓</button>
+      <p class="message" id="actionMessage"></p>
+    </article>
+  </div>
+</section>
+
+<section id="projectsSection" class="section-block" hidden>
+  <h2 class="section-heading">Project Studio 🚀</h2>
+  <p class="section-subtitle">Keep a record of things you create, build or practise.</p>
+  <div class="panel">
+    <form id="projectForm">
+      <div class="form-field">
+        <label for="projectName">Project name</label>
+        <input class="field" id="projectName" required maxlength="100" placeholder="Example: My first website">
+      </div>
+      <div class="form-field">
+        <label for="projectDescription">What did you make or learn?</label>
+        <textarea class="field" id="projectDescription" rows="3" maxlength="1500" placeholder="Describe your project..."></textarea>
+      </div>
+      <div class="form-field">
+        <label for="projectPhoto">Project photo (optional)</label>
+        <input class="field" id="projectPhoto" type="file" accept="image/*">
+        <div class="photo-preview" id="projectPhotoPreview"></div>
+      </div>
+      <button class="btn btn-primary" type="submit">Save Project</button>
+      <p class="message" id="projectMessage"></p>
+    </form>
+  </div>
+  <div class="project-list" id="projectList"></div>
+</section>
+
+<section class="section-block">
+  <div class="panel">
+    <h2 class="section-heading">Your Next Step Starts Here ✨</h2>
+    <p class="section-subtitle">Explore one interest, practise one skill, and reflect on one thing you learned today.</p>
+    <button class="btn btn-primary" id="backDashboard">Back to Dashboard ↑</button>
+    <button class="btn btn-outline" id="exportData">Export My Data</button>
+    <button class="btn btn-outline" id="resetData">Reset Local Data</button>
+    <p class="message" id="systemMessage" aria-live="polite"></p>
+  </div>
+</section>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <strong>🧠 MindSpark AI</strong><br>
+    Think Better · Learn Smarter · Grow Further<br>
+    <span class="small">A student learning companion. Your local progress stays in this browser.</span>
+  </div>
+</footer>
+<script>
+"use strict";
+
+const MS = {
+  profile: { name: "", education: "", goal: "" },
+  selectedSkills: [],
+  points: 0,
+  questionsAsked: 0,
+  completedActions: 0,
+  activity: [],
+  projects: [],
+  reflections: [],
+  discovery: { index: 0, answers: [] },
+  games: { questions: [], index: 0, selected: null, checked: false, score: 0 },
+  category: "All",
+  quoteIndex: 0,
+  factIndex: 0
+};
+
+const MS_STORAGE = "mindspark_ai_complete_v1";
+
+const $ = id => document.getElementById(id);
+
+function msMessage(id, text, type = "info") {
+  const el = $(id);
+  if (!el) return;
+  el.textContent = text;
+  el.className = "message " + type;
+}
+
+function msRecord(text) {
+  MS.activity.unshift({
+    text,
+    time: new Date().toLocaleString()
+  });
+  MS.activity = MS.activity.slice(0, 10);
+  msSave();
+  msRenderActivity();
+}
+
+function msSave() {
+  try {
+    localStorage.setItem(MS_STORAGE, JSON.stringify(MS));
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+function msLoad() {
+  try {
+    const saved = localStorage.getItem(MS_STORAGE);
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    Object.assign(MS, data);
+    if (!Array.isArray(MS.selectedSkills)) MS.selectedSkills = [];
+    if (!Array.isArray(MS.projects)) MS.projects = [];
+    if (!Array.isArray(MS.reflections)) MS.reflections = [];
+    if (!Array.isArray(MS.activity)) MS.activity = [];
+  } catch (error) {
+    console.error("Could not load saved data", error);
+  }
+}
+
+function msNavigate(id) {
+  const sections = [
+    "dashboardSection", "discoverySection", "brainSection",
+    "learningSection", "gamesSection", "dailySection", "projectsSection"
+  ];
+
+  sections.forEach(sectionId => {
+    const el = $(sectionId);
+    if (el) el.hidden = sectionId !== id;
+  });
+
+  document.querySelectorAll("[data-target]").forEach(button => {
+    button.classList.toggle("active", button.dataset.target === id);
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function msRenderActivity() {
+  const list = $("activityList");
+  if (!list) return;
+  list.replaceChildren();
+
+  if (!MS.activity.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "Your learning activity will appear here.";
+    list.appendChild(empty);
+    return;
+  }
+
+  MS.activity.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "activity-item";
+    const p = document.createElement("p");
+    p.textContent = item.text;
+    const small = document.createElement("small");
+    small.textContent = item.time;
+    div.append(p, small);
+    list.appendChild(div);
+  });
+}
+
+function msRenderDashboard() {
+  $("dashboardName").textContent = MS.profile.name || "Learner";
+  $("statSkills").textContent = MS.selectedSkills.length;
+  $("statPoints").textContent = MS.points;
+  $("statQuestions").textContent = MS.questionsAsked;
+  $("statProjects").textContent = MS.projects.length;
+
+  const total = 5;
+  const progress = Math.min(100, Math.round(
+    ((MS.selectedSkills.length > 0 ? 1 : 0) +
+     (MS.questionsAsked > 0 ? 1 : 0) +
+     (MS.points > 0 ? 1 : 0) +
+     (MS.projects.length > 0 ? 1 : 0) +
+     (MS.completedActions > 0 ? 1 : 0)) / total * 100
+  ));
+
+  $("progressFill").style.width = progress + "%";
+  $("progressLabel").textContent = progress + "% complete";
+  msRenderActivity();
+}
+
+const MS_SKILLS = [
+  ["🐍","Python Programming","Technology","Learn coding and solve problems."],
+  ["💻","Web Development","Technology","Build websites and web experiences."],
+  ["🤖","Artificial Intelligence","Technology","Explore how AI systems work."],
+  ["📱","App Development","Technology","Learn how apps are created."],
+  ["➗","Mathematics","Academics","Improve mathematical thinking."],
+  ["🧠","Aptitude & Reasoning","Academics","Practise logic and quantitative problems."],
+  ["🔬","Science","Academics","Understand the world through science."],
+  ["🗣️","English Communication","Communication","Improve speaking and writing."],
+  ["🎤","Public Speaking","Communication","Build confidence while speaking."],
+  ["✍️","Creative Writing","Creative Arts","Create stories and written content."],
+  ["🎬","Screenwriting","Creative Arts","Develop ideas into screenplays."],
+  ["🎥","Film Direction","Creative Arts","Learn visual storytelling and directing."],
+  ["🎭","Acting","Creative Arts","Explore characters and performance."],
+  ["📹","Cinematography","Creative Arts","Learn framing, lighting and composition."],
+  ["✂️","Video Editing","Creative Arts","Edit videos and tell better stories."],
+  ["📸","Photography","Creative Arts","Explore photography and composition."],
+  ["🎨","Graphic Design","Creative Arts","Create visual designs and artwork."],
+  ["🎵","Singing","Creative Arts","Explore music and vocal expression."],
+  ["💃","Dancing","Creative Arts","Explore movement and rhythm."],
+  ["📱","Content Creation","Creative Arts","Plan and create engaging content."],
+  ["🚀","Entrepreneurship","Personal Growth","Turn ideas into useful projects."],
+  ["🌟","Leadership","Personal Growth","Build teamwork and decision-making."],
+  ["🧩","Problem Solving","Personal Growth","Break challenges into smaller steps."],
+  ["⏰","Time Management","Personal Growth","Plan tasks and manage your time."]
+];
+
+function msRenderSkills() {
+  const grid = $("skillGrid");
+  if (!grid) return;
+  grid.replaceChildren();
+
+  const query = $("skillSearch").value.trim().toLowerCase();
+
+  const filtered = MS_SKILLS.filter(skill => {
+    const categoryMatch = MS.category === "All" || skill[2] === MS.category;
+    const queryMatch = skill.join(" ").toLowerCase().includes(query);
+    return categoryMatch && queryMatch;
+  });
+
+  filtered.forEach(skill => {
+    const selected = MS.selectedSkills.includes(skill[1]);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "skill-card" + (selected ? " selected" : "");
+    button.setAttribute("aria-pressed", String(selected));
+
+    const emoji = document.createElement("span");
+    emoji.className = "skill-emoji";
+    emoji.textContent = skill[0];
+
+    const name = document.createElement("strong");
+    name.textContent = skill[1];
+
+    const desc = document.createElement("small");
+    desc.textContent = skill[3];
+
+    button.append(emoji, name, desc);
+    button.addEventListener("click", () => {
+      const index = MS.selectedSkills.indexOf(skill[1]);
+      if (index >= 0) {
+        MS.selectedSkills.splice(index, 1);
+      } else if (MS.selectedSkills.length >= 3) {
+        msMessage("skillMessage", "Choose up to 3 interests for your discovery plan.", "error");
+        return;
+      } else {
+        MS.selectedSkills.push(skill[1]);
+      }
+
+      msRenderSkills();
+      msRenderDashboard();
+      msSave();
+      msMessage("skillMessage", MS.selectedSkills.length + " interest(s) selected.", "success");
+    });
+
+    grid.appendChild(button);
+  });
+}
+
+const MS_DISCOVERY = [
+  {
+    q: "What motivates you most?",
+    a: ["Solving problems","Creating something new","Helping or communicating","Exploring how things work"]
+  },
+  {
+    q: "How do you prefer to learn?",
+    a: ["Hands-on projects","Reading and examples","Watching and practising","Challenges and quizzes"]
+  },
+  {
+    q: "What would you like to achieve first?",
+    a: ["Build a useful skill","Create a portfolio project","Improve confidence","Explore career options"]
+  },
+  {
+    q: "How much experience do you have?",
+    a: ["I am a complete beginner","I know a few basics","I have tried small projects","I want advanced practice"]
+  }
+];
+
+function msRenderDiscovery() {
+  const i = MS.discovery.index;
+  const item = MS_DISCOVERY[i];
+  $("discoveryTitle").textContent = "Discovery Question " + (i + 1);
+  $("discoveryProgress").textContent = (i + 1) + " of " + MS_DISCOVERY.length;
+  $("discoveryBar").style.width = ((i + 1) / MS_DISCOVERY.length * 100) + "%";
+  $("discoveryQuestion").textContent = item.q;
+
+  const options = $("discoveryOptions");
+  options.replaceChildren();
+
+  item.a.forEach((text, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "choice-button" +
+      (MS.discovery.answers[i] === index ? " selected" : "");
+    button.textContent = text;
+    button.addEventListener("click", () => {
+      MS.discovery.answers[i] = index;
+      msRenderDiscovery();
+    });
+    options.appendChild(button);
+  });
+
+  $("discoveryBack").disabled = i === 0;
+  $("discoveryNext").textContent =
+    i === MS_DISCOVERY.length - 1 ? "Finish Discovery ✓" : "Next →";
+}
+
+function msStartDiscovery() {
+  if (!MS.selectedSkills.length) {
+    msMessage("skillMessage", "Select at least one interest first.", "error");
+    return;
+  }
+
+  MS.discovery = { index: 0, answers: [] };
+  $("discoveryQuiz").hidden = false;
+  $("discoveryResult").hidden = true;
+  msRenderDiscovery();
+  $("discoveryQuiz").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function msNextDiscovery() {
+  if (MS.discovery.answers[MS.discovery.index] === undefined) {
+    msMessage("discoveryMessage", "Choose an option to continue.", "error");
+    return;
+  }
+
+  if (MS.discovery.index < MS_DISCOVERY.length - 1) {
+    MS.discovery.index++;
+    msMessage("discoveryMessage", "", "info");
+    msRenderDiscovery();
+    return;
+  }
+
+  const result = $("discoveryResult");
+  const learningStyle = MS_DISCOVERY[1].a[MS.discovery.answers[1]];
+  result.hidden = false;
+  result.replaceChildren();
+
+  const heading = document.createElement("h3");
+  heading.textContent = "Your Discovery Summary ✨";
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent =
+    "Your selected interests: " + MS.selectedSkills.join(", ") +
+    ". Your preferred learning style: " + learningStyle +
+    ". Start with one small project, practise regularly, and review what you learn. " +
+    "This is a learning reflection, not a scientific personality assessment.";
+
+  result.append(heading, paragraph);
+  MS.points += 5;
+  msRecord("Completed the Skill Discovery quiz (+5 points)");
+  msRenderDashboard();
+  msSave();
+  $("discoveryMessage").textContent = "Discovery completed! +5 points.";
+  $("discoveryMessage").className = "message success";
+}
+
+function msPreviewImage(input, targetId) {
+  const target = $(targetId);
+  if (!target) return;
+
+  target.replaceChildren();
+  const file = input.files && input.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    target.textContent = "Please choose an image file.";
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    target.textContent = "Image is too large. Choose an image under 5 MB.";
+    input.value = "";
+    return;
+  }
+
+  const img = document.createElement("img");
+  img.alt = "Selected image preview";
+  img.src = URL.createObjectURL(file);
+  img.onload = () => URL.revokeObjectURL(img.src);
+  target.appendChild(img);
+}
+
+function msBrainReply(question, subject) {
+  const q = question.toLowerCase();
+  let steps;
+
+  if (subject.includes("Math") || q.includes("math") || q.includes("calculate")) {
+    steps = [
+      "Write down the information given in the question.",
+      "Identify exactly what you need to find.",
+      "Choose a suitable formula or method.",
+      "Solve one step at a time and check your result."
+    ];
+  } else if (subject.includes("Programming") || /python|code|loop|function|program/.test(q)) {
+    steps = [
+      "Identify the input and the expected output.",
+      "Break the task into smaller steps.",
+      "Write a small code example and run it.",
+      "Check each result and correct errors one at a time."
+    ];
+  } else if (subject.includes("English") || /english|grammar|speak|writing/.test(q)) {
+    steps = [
+      "Identify the main idea you want to communicate.",
+      "Look at the sentence structure or key vocabulary.",
+      "Create one simple example.",
+      "Read it again and check whether the meaning is clear."
+    ];
+  } else if (subject.includes("Creative") || /film|story|video|acting|sing|dance|design/.test(q)) {
+    steps = [
+      "Decide what you want your audience to feel or understand.",
+      "Write down the central idea in one sentence.",
+      "Plan a few small actions to bring it to life.",
+      "Create a first draft, review it, and improve one thing."
+    ];
+  } else {
+    steps = [
+      "Identify what you already know about the topic.",
+      "List the part that confuses you.",
+      "Find or create a simple example.",
+      "Explain the idea in your own words and practise it."
+    ];
+  }
+
+  return "Let's break this down step by step:\n\n" +
+    steps.map((step, i) => (i + 1) + ". " + step).join("\n") +
+    "\n\nNote: This is prepared learning guidance, not a live AI-generated solution. " +
+    "Image previews are supported, but reading text inside a photo requires OCR/AI integration.";
+}
+
+function msMakeLearningPlan(topic, subject) {
+  const steps = [
+    "Define the concept: write what you want to understand about “" + topic + "”.",
+    "Build the foundation: list the basic terms or ideas needed for this topic.",
+    "Study a simple example: choose one example and explain each step in your own words.",
+    "Practise independently: solve a similar task without looking at the example.",
+    "Review your result: identify what worked, what was confusing, and what to practise next."
+  ];
+
+  if (subject === "Programming") {
+    steps[1] = "Build the foundation: identify the input, variables, conditions or loops needed.";
+    steps[2] = "Study a small code example and trace how each line changes the result.";
+  } else if (subject === "Maths & Aptitude") {
+    steps[1] = "Build the foundation: list the known values, unknown value and useful formula.";
+    steps[2] = "Work through the arithmetic one step at a time and check the units.";
+  } else if (subject === "English") {
+    steps[1] = "Build the foundation: identify the key words, grammar pattern and intended meaning.";
+  }
+
+  const container = $("learningSteps");
+  container.replaceChildren();
+
+  steps.forEach(text => {
+    const div = document.createElement("div");
+    div.className = "step-item";
+    div.textContent = text;
+    container.appendChild(div);
+  });
+
+  $("learningResultTitle").textContent = "Learning plan: " + topic;
+  $("learningCheck").textContent =
+    "Can you explain the main idea of “" + topic +
+    "” in two or three sentences without copying the plan?";
+  $("learningResult").hidden = false;
+  MS.questionsAsked++;
+  MS.points += 2;
+  msRecord("Created a learning plan for " + topic + " (+2 points)");
+  msRenderDashboard();
+  msSave();
+}
+const MS_GAME_BANK = {
+  maths: [
+    {q:"What is 15% of 200?", a:["15","20","30","40"], correct:2, why:"10% of 200 is 20 and 5% is 10. Together, 15% is 30."},
+    {q:"What is 12 × 12?", a:["124","144","132","122"], correct:1, why:"12 × 12 = 144."},
+    {q:"A notebook costs ₹25. What do 4 notebooks cost?", a:["₹75","₹90","₹100","₹125"], correct:2, why:"25 × 4 = ₹100."}
+  ],
+  reasoning: [
+    {q:"Find the next number: 2, 4, 6, 8, __", a:["9","10","12","16"], correct:1, why:"The sequence increases by 2, so the next number is 10."},
+    {q:"Which item is different?", a:["Apple","Mango","Carrot","Banana"], correct:2, why:"Carrot is commonly classified as a vegetable; the others are fruits."},
+    {q:"If today is Monday, what day is it after 3 days?", a:["Tuesday","Wednesday","Thursday","Friday"], correct:2, why:"Tuesday is one day later, Wednesday two, Thursday three."}
+  ],
+  english: [
+    {q:"Choose the grammatically correct sentence.", a:["She go to college.","She goes to college.","She going to college.","She gone to college."], correct:1, why:"In the simple present, 'she' takes 'goes'."},
+    {q:"What is the opposite of ancient?", a:["Historic","Modern","Old","Past"], correct:1, why:"Modern refers to the present or recent times."},
+    {q:"Choose the simple past tense of write.", a:["Writed","Written","Wrote","Writing"], correct:2, why:"Wrote is the simple past; written is the past participle."}
+  ],
+  programming: [
+    {q:"Which Python keyword defines a function?", a:["function","def","fun","define"], correct:1, why:"Python uses the def keyword to define a function."},
+    {q:"What does len([10, 20, 30]) return?", a:["2","3","10","30"], correct:1, why:"The list has three items, so len returns 3."},
+    {q:"Which Python operator checks equality?", a:["=","==","!=","+="], correct:1, why:"== compares values; = assigns a value."}
+  ],
+  creative: [
+    {q:"What does a close-up shot usually emphasize?", a:["A face or detail","An entire city","Only music","Film credits"], correct:0, why:"A close-up makes a face or important detail prominent."},
+    {q:"What is a storyboard mainly used for?", a:["Budget calculation","Visual shot planning","Sound recording","Publishing"], correct:1, why:"A storyboard uses images to plan scenes and shots."},
+    {q:"What helps make a short story clearer?", a:["Unrelated scenes","Removing the main idea","A clear beginning, middle and end","Identical shots"], correct:2, why:"A clear structure helps an audience follow the story."}
+  ]
+};
+
+function msStartGame() {
+  const category = $("gameCategory").value;
+  MS.games = {
+    questions: (MS_GAME_BANK[category] || MS_GAME_BANK.maths).slice(),
+    index: 0,
+    selected: null,
+    checked: false,
+    score: 0
+  };
+  $("gameArea").hidden = false;
+  msRenderGame();
+}
+
+function msRenderGame() {
+  const game = MS.games;
+
+  if (game.index >= game.questions.length) {
+    $("gameQuestionNumber").textContent = "Practice completed!";
+    $("gameQuestion").textContent =
+      "Your score: " + game.score + " / " + game.questions.length;
+    $("gameOptions").replaceChildren();
+    $("gameBar").style.width = "100%";
+    $("gameScore").textContent = "Finished";
+    $("gameFeedback").textContent =
+      game.score === game.questions.length
+        ? "Excellent work! You answered every question correctly."
+        : "Good effort! Review the explanations and try again.";
+    $("gameFeedback").className = "message success";
+    $("checkGameAnswer").hidden = true;
+    $("nextGameQuestion").hidden = false;
+    $("nextGameQuestion").textContent = "Try Again ↻";
+    return;
+  }
+
+  const item = game.questions[game.index];
+  game.selected = null;
+  game.checked = false;
+
+  $("gameQuestionNumber").textContent =
+    "Question " + (game.index + 1) + " of " + game.questions.length;
+  $("gameScore").textContent = "Score: " + game.score;
+  $("gameBar").style.width =
+    (game.index / game.questions.length * 100) + "%";
+  $("gameQuestion").textContent = item.q;
+  $("gameOptions").replaceChildren();
+  $("gameFeedback").textContent = "";
+  $("gameFeedback").className = "message";
+  $("checkGameAnswer").hidden = false;
+  $("checkGameAnswer").disabled = false;
+  $("nextGameQuestion").hidden = true;
+  $("nextGameQuestion").textContent =
+    game.index === game.questions.length - 1 ? "See Results" : "Next Question →";
+
+  item.a.forEach((text, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "answer-option";
+    button.textContent = text;
+    button.setAttribute("aria-pressed", "false");
+    button.addEventListener("click", () => {
+      if (game.checked) return;
+      game.selected = index;
+      document.querySelectorAll("#gameOptions button").forEach(b => {
+        b.classList.remove("selected");
+        b.setAttribute("aria-pressed", "false");
+      });
+      button.classList.add("selected");
+      button.setAttribute("aria-pressed", "true");
+    });
+    $("gameOptions").appendChild(button);
+  });
+}
+
+function msCheckGame() {
+  const game = MS.games;
+  if (game.checked || game.index >= game.questions.length) return;
+
+  if (game.selected === null) {
+    msMessage("gameFeedback", "Choose an answer first.", "error");
+    return;
+  }
+
+  const item = game.questions[game.index];
+  game.checked = true;
+  const correct = game.selected === item.correct;
+
+  if (correct) {
+    game.score++;
+    MS.points += 2;
+  }
+
+  document.querySelectorAll("#gameOptions button").forEach((button, index) => {
+    button.disabled = true;
+    if (index === item.correct) button.classList.add("correct");
+    else if (index === game.selected && !correct) button.classList.add("wrong");
+  });
+
+  $("gameFeedback").textContent =
+    (correct ? "Correct! +2 points. " : "Not quite. ") + item.why;
+  $("gameFeedback").className = "message " + (correct ? "success" : "error");
+  $("checkGameAnswer").disabled = true;
+  $("nextGameQuestion").hidden = false;
+  $("gameScore").textContent = "Score: " + game.score;
+
+  msRenderDashboard();
+  msSave();
+}
+
+function msNextGame() {
+  if (MS.games.index >= MS.games.questions.length) {
+    msStartGame();
+    return;
+  }
+  if (!MS.games.checked) return;
+  MS.games.index++;
+  msRenderGame();
+
+  if (MS.games.index >= MS.games.questions.length) {
+    $("gameQuestionNumber").textContent = "Practice completed!";
+    $("gameQuestion").textContent =
+      "Your score: " + MS.games.score + " / " + MS.games.questions.length;
+    $("gameOptions").replaceChildren();
+    $("gameBar").style.width = "100%";
+    $("gameScore").textContent = "Finished";
+    $("gameFeedback").textContent =
+      "You earned " + (MS.games.score * 2) + " points in this round.";
+    $("checkGameAnswer").hidden = true;
+    $("nextGameQuestion").hidden = false;
+    $("nextGameQuestion").textContent = "Try Again ↻";
+    msRecord("Completed a Brain Games round");
+  }
+}
+
+const MS_QUOTES = [
+  "The Earth is what we all have in common. — Wendell Berry",
+  "Small actions add up: carry a reusable bottle and reduce single-use plastic.",
+  "Protect nature today so future generations can enjoy its beauty.",
+  "Save water where you can. Every drop is part of a bigger system.",
+  "Choose to reuse, repair and recycle whenever practical.",
+  "A cleaner environment begins with thoughtful everyday choices."
+];
+
+const MS_FACTS = [
+  "Earth's atmosphere helps regulate temperature and protects life from much harmful solar radiation.",
+  "Plants use photosynthesis to convert light energy into chemical energy.",
+  "The Pacific Ocean is the largest ocean on Earth.",
+  "Water can exist naturally as solid ice, liquid water and water vapour.",
+  "Biodiversity describes the variety of life in an ecosystem, region or on Earth.",
+  "The Moon's gravity is the main driver of Earth's ocean tides, with the Sun also contributing."
+];
+
+const MS_ACTIONS = [
+  "Carry a reusable water bottle today.",
+  "Spend five minutes learning a new concept.",
+  "Write down one question you want to understand better.",
+  "Switch off a light when it is not needed.",
+  "Explain one thing you learned to someone else.",
+  "Spend a few minutes planning tomorrow's learning task."
+];
+
+function msRenderDaily() {
+  $("environmentQuote").textContent = MS_QUOTES[MS.quoteIndex % MS_QUOTES.length];
+  $("gkFact").textContent = MS_FACTS[MS.factIndex % MS_FACTS.length];
+  $("dailyAction").textContent =
+    MS_ACTIONS[MS.completedActions % MS_ACTIONS.length];
+}
+
+function msRenderProjects() {
+  const list = $("projectList");
+  if (!list) return;
+  list.replaceChildren();
+
+  if (!MS.projects.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "Your saved projects will appear here.";
+    list.appendChild(empty);
+    return;
+  }
+
+  MS.projects.forEach((project, index) => {
+    const card = document.createElement("article");
+    card.className = "project-card";
+    const heading = document.createElement("h3");
+    heading.textContent = project.name;
+    const description = document.createElement("p");
+    description.textContent = project.description || "No description added.";
+    card.append(heading, description);
+
+    if (project.photo) {
+      const img = document.createElement("img");
+      img.src = project.photo;
+      img.alt = "Project preview";
+      card.appendChild(img);
+    }
+
+    const small = document.createElement("small");
+    small.className = "muted";
+    small.textContent = project.date;
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "btn btn-outline";
+    remove.textContent = "Remove";
+    remove.addEventListener("click", () => {
+      if (!confirm("Remove this project?")) return;
+      MS.projects.splice(index, 1);
+      msSave();
+      msRenderProjects();
+      msRenderDashboard();
+    });
+
+    card.append(small, document.createElement("br"), remove);
+    list.appendChild(card);
+  });
+}
+
+function msSetupProjectForm() {
+  $("projectForm").addEventListener("submit", event => {
+    event.preventDefault();
+    const name = $("projectName").value.trim();
+    const description = $("projectDescription").value.trim();
+    const file = $("projectPhoto").files[0];
+
+    if (!name) {
+      msMessage("projectMessage", "Enter a project name.", "error");
+      return;
+    }
+
+    const saveProject = photo => {
+      MS.projects.unshift({
+        name,
+        description,
+        photo: photo || "",
+        date: new Date().toLocaleDateString()
+      });
+
+      MS.points += 3;
+      msSave();
+      msRenderProjects();
+      msRenderDashboard();
+      msRecord("Saved project: " + name + " (+3 points)");
+      $("projectForm").reset();
+      $("projectPhotoPreview").replaceChildren();
+      msMessage("projectMessage", "Project saved! +3 points.", "success");
+    };
+
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = () => saveProject(reader.result);
+      reader.onerror = () => msMessage("projectMessage", "Could not read this image.", "error");
+      reader.readAsDataURL(file);
+    } else {
+      saveProject("");
+    }
+  });
+}
+
+function msSetupProfile() {
+  $("profileForm").addEventListener("submit", event => {
+    event.preventDefault();
+
+    const name = $("studentName").value.trim();
+    if (!name) {
+      msMessage("profileMessage", "Please enter your name.", "error");
+      return;
+    }
+
+    MS.profile = {
+      name,
+      education: $("educationLevel").value,
+      goal: $("studentGoal").value
+    };
+
+    $("welcomeSection").hidden = true;
+    $("appScreen").hidden = false;
+    msNavigate("dashboardSection");
+    msRecord("Created student profile");
+    msRenderDashboard();
+    msSave();
+    msMessage("profileMessage", "Profile created.", "success");
+  });
+}
+
+function msInit() {
+  msLoad();
+
+  $("profileForm").addEventListener("submit", event => {
+    event.preventDefault();
+    const name = $("studentName").value.trim();
+    if (!name) {
+      msMessage("profileMessage", "Please enter your name.", "error");
+      return;
+    }
+
+    MS.profile = {
+      name,
+      education: $("educationLevel").value,
+      goal: $("studentGoal").value
+    };
+
+    $("welcomeSection").hidden = true;
+    $("appScreen").hidden = false;
+    msNavigate("dashboardSection");
+    msRecord("Started a learning journey");
+    msRenderDashboard();
+    msSave();
+  });
+
+  if (MS.profile.name) {
+    $("studentName").value = MS.profile.name;
+    $("educationLevel").value = MS.profile.education || "Intermediate";
+    $("studentGoal").value = MS.profile.goal || "Explore my interests";
+    $("welcomeSection").hidden = true;
+    $("appScreen").hidden = false;
+  }
+
+  document.querySelectorAll("[data-target]").forEach(button => {
+    button.addEventListener("click", () => msNavigate(button.dataset.target));
+  });
+
+  document.querySelectorAll("[data-jump]").forEach(button => {
+    button.addEventListener("click", () => msNavigate(button.dataset.jump));
+  });
+
+  $("topStartBtn").addEventListener("click", () => {
+    if (MS.profile.name) {
+      $("appScreen").hidden = false;
+      msNavigate("dashboardSection");
+    } else {
+      $("welcomeSection").scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  $("heroStartBtn").addEventListener("click", () => {
+    if (MS.profile.name) {
+      $("appScreen").hidden = false;
+      msNavigate("discoverySection");
+    } else {
+      $("welcomeSection").scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  $("topProfileBtn").addEventListener("click", () => {
+    $("appScreen").hidden = false;
+    msNavigate("dashboardSection");
+  });
+
+  $("heroBrainBtn").addEventListener("click", () => {
+    if (!MS.profile.name) {
+      $("welcomeSection").scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    $("appScreen").hidden = false;
+    msNavigate("brainSection");
+  });
+
+  $("skillSearch").addEventListener("input", msRenderSkills);
+
+  $("skillFilters").addEventListener("click", event => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
+    MS.category = button.dataset.category;
+    document.querySelectorAll("#skillFilters .chip").forEach(chip => {
+      chip.classList.toggle("active", chip === button);
+    });
+    msRenderSkills();
+  });
+
+  $("beginDiscoveryBtn").addEventListener("click", msStartDiscovery);
+
+  $("discoveryBack").addEventListener("click", () => {
+    if (MS.discovery.index > 0) {
+      MS.discovery.index--;
+      msRenderDiscovery();
+    }
+  });
+
+  $("discoveryNext").addEventListener("click", msNextDiscovery);
+
+  $("brainPhoto").addEventListener("change", () =>
+    msPreviewImage($("brainPhoto"), "brainPhotoPreview")
+  );
+
+  $("projectPhoto").addEventListener("change", () =>
+    msPreviewImage($("projectPhoto"), "projectPhotoPreview")
+  );
+
+  $("brainForm").addEventListener("submit", event => {
+    event.preventDefault();
+    const question = $("brainQuestion").value.trim();
+    if (!question) return;
+
+    $("brainResponse").textContent =
+      msBrainReply(question, $("brainSubject").value);
+
+    MS.questionsAsked++;
+    msRecord("Asked Brain Float about " + $("brainSubject").value);
+    msRenderDashboard();
+    msSave();
+  });
+
+  $("clearBrain").addEventListener("click", () => {
+    $("brainForm").reset();
+    $("brainPhotoPreview").replaceChildren();
+    $("brainResponse").textContent = "Hi! I'm Brain Float. Type a question to get started.";
+  });
+
+  $("learningForm").addEventListener("submit", event => {
+    event.preventDefault();
+    msMakeLearningPlan($("learningTopic").value.trim(), $("learningSubject").value);
+  });
+
+  $("saveLearningReflection").addEventListener("click", () => {
+    const text = $("learningReflection").value.trim();
+    if (!text) {
+      msMessage("learningMessage", "Write a reflection first.", "error");
+      return;
+    }
+    MS.reflections.unshift({ text, date: new Date().toLocaleString() });
+    MS.points++;
+    $("learningReflection").value = "";
+    msSave();
+    msRecord("Saved a learning reflection (+1 point)");
+    msMessage("learningMessage", "Reflection saved! +1 point.", "success");
+    msRenderDashboard();
+  });
+
+  $("startGame").addEventListener("click", msStartGame);
+  $("checkGameAnswer").addEventListener("click", msCheckGame);
+  $("nextGameQuestion").addEventListener("click", msNextGame);
+
+  $("nextQuote").addEventListener("click", () => {
+    MS.quoteIndex = (MS.quoteIndex + 1) % MS_QUOTES.length;
+    msRenderDaily();
+    msSave();
+  });
+
+  $("nextFact").addEventListener("click", () => {
+    MS.factIndex = (MS.factIndex + 1) % MS_FACTS.length;
+    msRenderDaily();
+    msSave();
+  });
+
+  $("completeAction").addEventListener("click", () => {
+    MS.completedActions++;
+    MS.points++;
+    msRecord("Completed a Daily Spark action (+1 point)");
+    msRenderDaily();
+    msRenderDashboard();
+    msMessage("actionMessage", "Nice work! +1 point.", "success");
+    msSave();
+  });
+
+  msSetupProjectForm();
+
+  $("backDashboard").addEventListener("click", () => {
+    msNavigate("dashboardSection");
+  });
+
+  $("exportData").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(MS, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "mindspark-progress.json";
+    link.click();
+    URL.revokeObjectURL(url);
+    msMessage("systemMessage", "Your progress export was created.", "success");
+  });
+
+  $("resetData").addEventListener("click", () => {
+    if (!confirm("Reset all MindSpark data saved in this browser?")) return;
+    localStorage.removeItem(MS_STORAGE);
+    location.reload();
+  });
+
+  msRenderSkills();
+  msRenderDashboard();
+  msRenderProjects();
+  msRenderDaily();
+}
+
+document.addEventListener("DOMContentLoaded", msInit);
+</script>
+</body>
+</html>
